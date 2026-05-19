@@ -436,8 +436,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initGlitchEffect();
 
-    document.querySelectorAll('.nav-links a').forEach(a => {
-        if (a.getAttribute('href') === window.location.pathname) {
+    var path = window.location.pathname.replace(/\/+$/, '');
+    document.querySelectorAll('.nav-links a').forEach(function(a) {
+        var href = a.getAttribute('href');
+        if (href === '.') href = '';
+        if (path.endsWith(href) && (href || path.indexOf('/') === path.lastIndexOf('/'))) {
             a.classList.add('active');
         }
     });
