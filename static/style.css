@@ -418,6 +418,13 @@ footer {
     opacity: 0.6;
 }
 
+.footer-build {
+    margin-top: 12px;
+    opacity: 0.4;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+}
+
 #sim-panel {
     max-width: 780px;
     margin: 0 auto;
