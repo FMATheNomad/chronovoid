@@ -425,52 +425,19 @@ function initSimulation() {
     updateSim();
 }
 
-var manifestoHTML = '<p>What <em>is</em> a microsecond to a universe that has been waiting for thirteen billion years?</p>' +
-'<hr>' +
-'<p>What is time, really?</p>' +
-'<p>Not the kind measured by atomic vibrations or quartz oscillations, but the kind that passes whether or not anyone is there to count it. We live our lives inside a collective hallucination called "now" — and somehow, across continents and oceans and satellites orbiting a pale blue dot, we expect that hallucination to be <em>the same</em> for everyone.</p>' +
-'<p>We built clocks not because we understood time. We built clocks because we were afraid of it. Because without them, <em>now</em> here is not <em>now</em> there. Two servers, separated by a cable under the Atlantic Ocean, cannot agree on what time it is. They drift. They argue. They fall out of sync.</p>' +
-'<p>And in that tiny gap — that sliver of microseconds — entire systems can collapse.</p>' +
-'<blockquote><p>What happens when two clocks disagree? Nothing, if you are a poet. Everything, if you are a satellite calculating its position.</p></blockquote>' +
-'<hr>' +
-'<p>There is no time in the void.</p>' +
-'<p>Between stars, in the cold emptiness where nothing echoes, there is no clock. There is no reference. No NTP server drifting through the cosmic background radiation, no atomic transition counting out the seconds. There is only stillness — the quiet hum of a universe that does not synchronize with anything.</p>' +
-'<p>We invented synchronization because we could not bear the alternative. Without it, every transaction, every signal, every <em>now</em> is a gamble. Synchronization is not a technical feature. It is a ritual. A prayer repeated every millisecond: <em>we are still here, we still agree, the world has not yet fallen apart.</em></p>' +
-'<p>The universe does not synchronize. It simply <em>is</em>. But we are not the universe. We are the part of the universe that cannot stop asking what time it is.</p>' +
-'<blockquote><p>To synchronize is to insist that we are not alone in the dark.</p></blockquote>' +
-'<hr>' +
-'<p>A microsecond is invisible. You will never feel it pass. It is one millionth of a heartbeat, one billionth of a breath.</p>' +
-'<p>And yet, a microsecond of drift can collapse a stock market. Can send a self-driving car into oncoming traffic. Can misalign a telescope staring into the birth of stars. It is the smallest unit of chaos we have learned to fear.</p>' +
-'<p>We chase precision because precision feels like control. If we can measure time to the microsecond, the nanosecond, the picosecond — maybe we can measure everything else too. Maybe we can measure our own uncertainty. Maybe we can measure the distance between us and the void.</p>' +
-'<p>But precision is not peace. It is a mirror held up to our own restlessness. The more accurately we measure time, the more we realize how little of it we have.</p>' +
-'<blockquote><p>A microsecond is too small to feel. Too large to ignore. It is the silence between heartbeats of a machine that never sleeps.</p></blockquote>' +
-'<hr>' +
-'<p>There is a clock somewhere in the world that keeps time better than any other. It will never drift. It will never be wrong. It sits in a temperature-controlled room, shielded from the world, counting the oscillations of a cesium atom with inhuman patience.</p>' +
-'<p>It is the closest thing we have to a heartbeat for the planet.</p>' +
-'<p>Every other clock — every phone, every server, every wristwatch — is simply asking that one clock for permission to call itself correct. We have built a hierarchy of trust around a single truth: <em>this atom vibrates 9,192,631,770 times per second, and that is what a second is.</em></p>' +
-'<p>We invented the second. The atom simply does what it has always done. We are the ones who decided that 9,192,631,770 vibrations is the line between order and chaos.</p>' +
-'<p>We are the ones who chose to believe that time can be measured at all.</p>' +
-'<blockquote><p>We did not discover time. We invented it. And we have been trying to keep it under control ever since.</p></blockquote>' +
-'<hr>' +
-'<p>So what is Chronovoid?</p>' +
-'<p>It is not a tool. It is not a dashboard. It is a window into the obsession of a species that refuses to drift apart. A page that watches the clocks of the world and asks: <em>are we still together?</em></p>' +
-'<p>Every microsecond counted is a microsecond we did not lose. Every synchronized clock is a small victory against the entropy that pulls everything apart. The void is patient. It does not care if our clocks agree.</p>' +
-'<p>But we care.</p>' +
-'<p>And maybe that is enough.</p>' +
-'<hr>' +
-'<p class="manifesto-closing">There is no silence between synchronized clocks. There is only the quiet hum of agreement.</p>';
-
 function initManifesto() {
-    var btn = document.getElementById('manifesto-toggle');
-    var content = document.getElementById('manifesto-content');
-    if (!btn || !content) return;
-    content.innerHTML = manifestoHTML;
+    var btn = document.getElementById('manifesto-btn');
+    var reveal = document.getElementById('manifesto-reveal');
+    if (!btn || !reveal) return;
     btn.addEventListener('click', function() {
-        var isOpen = content.classList.toggle('open');
-        btn.classList.toggle('open', isOpen);
-        btn.textContent = isOpen
-            ? (currentLang === 'id' ? 'Tutup Manifesto' : 'Close Manifesto')
-            : translations[currentLang].manifesto_btn;
+        var isOpen = reveal.classList.contains('open');
+        if (isOpen) {
+            reveal.classList.remove('open');
+            btn.textContent = translations[currentLang].manifesto_btn;
+        } else {
+            reveal.classList.add('open');
+            btn.textContent = currentLang === 'id' ? '\u25b2 Tutup Manifesto' : '\u25b2 Close Manifesto';
+        }
     });
 }
 
