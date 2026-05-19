@@ -92,6 +92,9 @@ function applyLanguage(lang) {
     });
     const loadingEl = document.getElementById('loading-text');
     if (loadingEl) loadingEl.textContent = t.loading;
+    document.querySelectorAll('.manifesto-lang').forEach(function(el) {
+        el.classList.toggle('active', el.classList.contains('manifesto-lang-' + lang));
+    });
 }
 
 class VisualEngine {

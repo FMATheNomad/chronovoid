@@ -464,6 +464,14 @@ main {
     margin: 24px 0;
 }
 
+.manifesto-lang {
+    display: none;
+}
+
+.manifesto-lang.active {
+    display: block;
+}
+
 .manifesto-panel .manifesto-closing {
     text-align: center;
     color: rgba(0, 212, 255, 0.5);
